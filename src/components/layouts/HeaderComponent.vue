@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav class="navbar navbar-light bg-light px-4 d-flex justify-content-between">
+        <nav class="navbar navbar-light px-4 d-flex justify-content-between" style="background-color: lightblue;">
             <a href="#" class="navbar-brand">Las Mangas Del Chaleco</a>
             <div>
                 <ul class="navbar-nav">

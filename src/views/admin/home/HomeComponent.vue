@@ -1,11 +1,12 @@
 <template>
+  <div>
     <HeaderComponent/>
     <div class="row">
-        <aside class="col-3">
+        <aside class="col-2">
             <SidebarComponent/>
             <!--END SIDEBAR-->
         </aside>
-        <main class="col-9">
+        <main class="col-10">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                 <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -20,27 +21,30 @@
                    <div class="container">
                     <div class="carousel-caption text-start">
                         <h1 class="textbig">OFERTA RELAMPAGO</h1>
-                        <p class="textbig">Correle que se acaban!</p>
+                        <p class="textsmall">Correle que se acaban!</p>
                     </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                  <router-link to="/admin/products" class="nav-link">
+                   <img class="imagencita" src="@/assets/img/cancun.jpg" alt="" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    </router-link> 
                     <div class="container">
                     <div class="carousel-caption">
-                        <h1 class="textbig">Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                        <h1 class="textbig2">2X1!</h1>
+                        <p class="textsmall2">COMPRA 2 Y PAGA 1</p>
                     </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                  <router-link to="/admin/products" class="nav-link">
+                   <img class="imagencita2" src="@/assets/img/naruto.jpg" alt="" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    </router-link> 
+                    
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        <h1 class="textbig3">Naruto Vuelve!</h1>
+                        <p class="textsmall3">Compra los nuevos tomos de naruto </p>
                     </div>
                     </div>
                 </div>
@@ -59,7 +63,7 @@
         </main>
         <!--END ROW MAIN-->
     </div>
-    
+  </div>
 </template>
 <script>
     import HeaderComponent from '@/components/layouts/HeaderComponent.vue'
@@ -76,8 +80,6 @@
 
 <style>
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   color: #5a5a5a;
 }
 .carousel {
@@ -85,6 +87,47 @@ body {
 }
 .textbig{
     color: black;
+    text-decoration: solid;
+    text-decoration: underline;
+}
+.textbig2{
+    color: black;
+    text-decoration: solid;
+    text-decoration: underline;
+    text-align: right; 
+}
+.textbig3{
+    color: black;
+    text-decoration: solid;
+    text-decoration: underline;
+    text-align: right;
+    text-align: bottom;
+}
+.textsmall{
+  color: black;
+  text-decoration: solid;
+  
+}
+.textsmall2{
+  color: black;
+  text-decoration: solid;
+  text-align: right;
+}
+.textsmall3{
+  color: black;
+  text-decoration: solid;
+  text-align: right;
+  text-align:bottom;
+}
+.imagencita{
+  opacity: 90%;
+  margin-left: 20%;
+  margin-bottom:10%;
+}
+.imagencita2{
+  opacity: 90%;
+  margin-left: 20%;
+  margin-top:0%;
 }
 .carousel-caption {
   bottom: 3rem;
@@ -92,6 +135,7 @@ body {
 }
 .carousel-item {
   height: 32rem;
+  background-color:lightsteelblue;
 }
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
