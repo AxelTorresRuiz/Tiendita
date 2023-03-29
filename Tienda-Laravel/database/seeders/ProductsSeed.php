@@ -17,7 +17,7 @@ class ProductsSeed extends Seeder
     {
         DB::table('products')->insert([
             'name'=>'Evangelion',
-            'price'=>250,
+            'price'=>100,
             'img'=>'default.jpg',
             'condition'=>'Nuevo',
             'description'=>'Tomo uno de el manga de Evangelion',
@@ -30,11 +30,11 @@ class ProductsSeed extends Seeder
             'id_user'=>2
         ]);
         DB::table('products')->insert([
-            'name'=>'Gorra de Beis',
-            'price'=>150,
-            'img'=>'default.jpg',
+            'name'=>'Tasogare Otome X Amnesia',
+            'price'=>100,
+            'img'=>'toxatom3.jpg',
             'condition'=>'new',
-            'description'=>'Gorra del equipo Boston',
+            'description'=>'Tomo 3 de Tasogare Otome x Amnesia',
             'ship'=>false,
             'stock'=>20,
             'size'=>'unitalla',
