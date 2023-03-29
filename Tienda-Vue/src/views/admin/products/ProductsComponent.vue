@@ -25,7 +25,7 @@
                         <img :src="'http://localhost:8000/img/products/'+ x.product.img" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ x.product.name }}</h5>
-                            <p class="card-text">Description</p>
+                            <p class="card-text">{{ x.product.description }}</p>
                             <div class="d-flex justify-content-between p-2">
                                 <button class="btn btn-sm btn-outline-dark">
                                     <i class="fa fa-arrow-right"></i>

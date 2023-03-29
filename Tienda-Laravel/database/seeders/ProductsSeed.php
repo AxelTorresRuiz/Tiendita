@@ -16,11 +16,11 @@ class ProductsSeed extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name'=>'Pantalon roto',
+            'name'=>'Evangelion',
             'price'=>250,
             'img'=>'default.jpg',
-            'condition'=>'Usado',
-            'description'=>'Pantalon de la marca hollister',
+            'condition'=>'Nuevo',
+            'description'=>'Tomo uno de el manga de Evangelion',
             'ship'=>true,
             'stock'=>8,
             'size'=>'5',
