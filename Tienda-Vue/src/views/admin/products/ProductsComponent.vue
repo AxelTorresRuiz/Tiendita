@@ -21,11 +21,12 @@
             <div v-if="!add" class="row">
                 <!--Product Item-->
                 <div class="col-3 my-2 " v-for="x in data" v-bind:key="x.product.id">
-                    <div class="card">
+                    <div class="card mangah">
                         <img :src="'http://localhost:8000/img/products/'+ x.product.img" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ x.product.name }}</h5>
-                            <p class="card-text">Description</p>
+                            <p class="card-text">{{ x.product.description }}</p>
+                            <p class="card-text fst-italic pricclas">Precio: {{ x.product.price }}</p>
                             <div class="d-flex justify-content-between p-2">
                                 <button class="btn btn-sm btn-outline-dark">
                                     <i class="fa fa-arrow-right"></i>
@@ -83,7 +84,8 @@
     }
 </script>
 <style>
-.card:hover{
+.mangah:hover{
     transform: scale(1.15);
 }
+
 </style>

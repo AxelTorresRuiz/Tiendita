@@ -16,11 +16,11 @@ class ProductsSeed extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name'=>'Pantalon roto',
-            'price'=>250,
+            'name'=>'Evangelion',
+            'price'=>100,
             'img'=>'default.jpg',
-            'condition'=>'Usado',
-            'description'=>'Pantalon de la marca hollister',
+            'condition'=>'Nuevo',
+            'description'=>'Tomo uno de el manga de Evangelion',
             'ship'=>true,
             'stock'=>8,
             'size'=>'5',
@@ -30,11 +30,11 @@ class ProductsSeed extends Seeder
             'id_user'=>2
         ]);
         DB::table('products')->insert([
-            'name'=>'Gorra de Beis',
-            'price'=>150,
-            'img'=>'default.jpg',
+            'name'=>'Tasogare Otome X Amnesia',
+            'price'=>100,
+            'img'=>'toxatom3.jpg',
             'condition'=>'new',
-            'description'=>'Gorra del equipo Boston',
+            'description'=>'Tomo 3 de Tasogare Otome x Amnesia',
             'ship'=>false,
             'stock'=>20,
             'size'=>'unitalla',
