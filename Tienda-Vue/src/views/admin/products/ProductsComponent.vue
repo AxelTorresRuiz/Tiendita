@@ -20,11 +20,11 @@
             </h1>
             <div v-if="!add" class="row">
                 <!--Product Item-->
-                <div class="col-3 my-2 " v-for="x in data" v-bind:key="x.id">
+                <div class="col-3 my-2 " v-for="x in data" v-bind:key="x.product.id">
                     <div class="card">
-                        <img src="@/assets/img/male.png" alt="" class="card-img-top">
+                        <img :src="'http://localhost:8000/img/products/'+ x.product.img" alt="" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{ x.name }}</h5>
+                            <h5 class="card-title">{{ x.product.name }}</h5>
                             <p class="card-text">Description</p>
                             <div class="d-flex justify-content-between p-2">
                                 <button class="btn btn-sm btn-outline-dark">
@@ -58,7 +58,7 @@
     import HeaderComponent from '@/components/layouts/HeaderComponent.vue'
     import SidebarComponent from '@/components/layouts/SidebarComponent.vue'
     import ProductAddComponent from './ProductAddComponent.vue'
-
+    import axios from 'axios'
     export default{
         name:'ProductsComponent',
         components:{
@@ -70,13 +70,20 @@
             return{
                 add:false,
                 data:[
-                    {id:1,name:'Product 1',price:100},
-                    {id:2,name:'Product 2',price:200},
-                    {id:3,name:'Product 3',price:300},
-                    {id:4,name:'Product 4',price:400},
-                    {id:5,name:'Product 5',price:500},
+                    
                 ]
             }
-        }
+        },created(){
+                axios.get("http://localhost:8000/api/products").then( (result)=>{
+                    if((result.data.status == 'success')){
+                       this.data = result.data.data
+                    }
+                } )
+            }
     }
 </script>
+<style>
+.card:hover{
+    transform: scale(1.15);
+}
+</style>
