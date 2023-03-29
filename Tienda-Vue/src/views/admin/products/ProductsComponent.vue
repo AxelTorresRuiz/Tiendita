@@ -58,6 +58,8 @@
     import HeaderComponent from '@/components/layouts/HeaderComponent.vue'
     import SidebarComponent from '@/components/layouts/SidebarComponent.vue'
     import ProductAddComponent from './ProductAddComponent.vue'
+    import axios from 'axios'
+
     export default{
         name:'ProductsComponent',
         components:{
@@ -77,5 +79,6 @@
                 ]
             }
         }
+        
     }
 </script>
