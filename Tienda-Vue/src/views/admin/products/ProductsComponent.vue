@@ -58,6 +58,7 @@
     import HeaderComponent from '@/components/layouts/HeaderComponent.vue'
     import SidebarComponent from '@/components/layouts/SidebarComponent.vue'
     import ProductAddComponent from './ProductAddComponent.vue'
+    import axios from 'axios'
     export default{
         name:'ProductsComponent',
         components:{
@@ -76,6 +77,15 @@
                     {id:5,name:'Product 5',price:500},
                 ]
             }
-        }
+        },created(){
+                axios.get("http://localhost:8000/api/products").then( (result)=>{
+                    console.log(result)
+                } )
+            }
     }
 </script>
+<style>
+.card:hover{
+    transform: scale(1.15);
+}
+</style>
