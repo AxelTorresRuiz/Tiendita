@@ -2,10 +2,11 @@
   <div>
     <HeaderComponent/>
     <div class="row">
-        <aside class="col-2">
+        <aside>
             <SidebarComponent/>
             <!--END SIDEBAR-->
         </aside>
+        <div class="col-1"></div>
         <main class="col-10">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">

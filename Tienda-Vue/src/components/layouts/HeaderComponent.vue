@@ -1,12 +1,13 @@
 <template>
     <header>
-        <nav class="navbar navbar-light px-4 d-flex justify-content-between" style="background-color: lightblue;">
-            <a href="#" class="navbar-brand">Las Mangas Del Chaleco</a>
+        <nav class="navbar navbar-light px-4 d-flex justify-content-between" style="background-color: #2B2B2B;">
+            <a href="#" class="navbar-brand text-warning">Las Mangas Del Chaleco</a>
             <div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <img src="@/assets/img/user.png" class="imgProfile" alt="">
-                        Axel Torres
+                        
+                         Axel Torres
                     </li>
                 </ul>
             </div>
