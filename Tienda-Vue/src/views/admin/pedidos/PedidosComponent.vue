@@ -7,6 +7,9 @@
         </aside>
         <main class="col-10">
             
+
+
+
         </main>
         </div>
 </template>
