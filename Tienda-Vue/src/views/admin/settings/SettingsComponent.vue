@@ -2,7 +2,7 @@
     <div>
         <HeaderComponent/>
         <div class="row">
-            <aside class="col-2">
+            <aside>
                 <SidebarComponent/>
             <!--END SIDEBAR-->
             </aside>

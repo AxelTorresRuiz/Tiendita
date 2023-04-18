@@ -1,7 +1,7 @@
 <template>
     <HeaderComponent/>
     <div class="row">
-        <aside class="col-3">
+        <aside>
             <SidebarComponent/>
             <!--END SIDEBAR-->
         </aside>
