@@ -4,12 +4,14 @@ import SettingsComponent from '@/views/admin/settings/SettingsComponent'
 import NotFoundComponent from '@/views/admin/notfound/NotFoundComponent'
 import ProductsComponent from '@/views/admin/products/ProductsComponent'
 import PedidosComponent from '@/views/admin/pedidos/PedidosComponent'
+import DetailsComponent from '@/views/front/details/DetailsComponent'
 
 const routes =[
     {path:'/admin',name:'admin',component:HomeComponent},
     {path:'/admin/settings',name:'settings',component:SettingsComponent},
     {path:'/admin/products',name:'products',component:ProductsComponent},
     {path:'/admin/pedidos',name:'pedidos',component:PedidosComponent},
+    {path:'/details', name:'details',component:DetailsComponent},
     {path:'/:pathMatch(.*)*',name:"notfound",component:NotFoundComponent}
     
     
