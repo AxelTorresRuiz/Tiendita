@@ -221,16 +221,24 @@
 <script>
 import FooterFrontComponent from '@/components/layoutsfrontend/FooterFrontComponent.vue';
 import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vue';
-
+import axios from axios;
   
     export default{
         name:'HomeComponent',
         components:{
     NavFrontComponent,
     FooterFrontComponent
+},
+data(){
+    return{
+        categorys:[],
+        data:[],
+        loaded:false
+        }
+    },created() {
+        axios.get("http://localhost:8000/api/products").then( (result)=>{} )
+    },
 }
-    }
-    
 </script>
 
 <style>
