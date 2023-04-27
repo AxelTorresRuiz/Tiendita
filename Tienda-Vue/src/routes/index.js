@@ -11,7 +11,7 @@ const routes =[
     {path:'/admin/settings',name:'settings',component:SettingsComponent},
     {path:'/admin/products',name:'products',component:ProductsComponent},
     {path:'/admin/pedidos',name:'pedidos',component:PedidosComponent},
-    {path:'/details', name:'details',component:DetailsComponent},
+    {path:'/details/:slug', name:'details',component:DetailsComponent},
     {path:'/:pathMatch(.*)*',name:"notfound",component:NotFoundComponent}
     
     
