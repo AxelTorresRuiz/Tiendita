@@ -142,6 +142,10 @@ import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vu
 
 export default{
     name: "DetailsComponent",
-    components: { NavFrontComponent }
+    components: { NavFrontComponent },
+    created() {
+    console.log(this.$route.params.slug)
 }
+}
+
 </script>
