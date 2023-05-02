@@ -25,7 +25,7 @@ class ProductsSeed extends Seeder
             'stock'=>8,
             'size'=>'5',
             'status'=>'disponible',
-            'slug'=>'pantalon-roto',
+            'slug'=>'evangelion-manga',
             'id_category'=>1,
             'id_user'=>2
         ]);
@@ -39,7 +39,7 @@ class ProductsSeed extends Seeder
             'stock'=>20,
             'size'=>'unitalla',
             'status'=>'disponible',
-            'slug'=>'gorra-de-beis',
+            'slug'=>'tasogare-otome-x-amnesia-manga',
             'id_category'=>4,
             'id_user'=>1
         ]);
