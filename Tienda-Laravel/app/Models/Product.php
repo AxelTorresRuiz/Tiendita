@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
+    use Sluggable;
     use HasFactory;
     protected $table ='products';
     protected $fillable =[
@@ -22,4 +24,12 @@ class Product extends Model
         'id_category',
         'id_user',
     ];
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 }

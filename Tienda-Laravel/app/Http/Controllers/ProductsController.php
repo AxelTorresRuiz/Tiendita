@@ -152,7 +152,7 @@ class ProductsController extends Controller
             'stock'=>'required',
             'size'=>'required',
             'status'=>'required|min:4',
-            'slug'=>'required|min:4',
+            //'slug'=>'required|min:4',
             'id_category'=>'required',
             'id_user'=>'required',
         ]);
@@ -173,7 +173,7 @@ class ProductsController extends Controller
             $product->stock = $request->stock;
             $product->size = $request->size;
             $product->status = $request->status;
-            $product->slug = $request->slug;
+            //$product->slug = $request->slug;
             $product->id_category = $request->id_category;
             $product->id_user = $request->id_user;
             $product->save();
@@ -229,7 +229,20 @@ class ProductsController extends Controller
             ]);
         }//llave del else
     }//llave update
-
+    public function show($id){
+        if(Product::where('slug',$id)->exists()){
+            $product = Product::where('slug',$id)->first();
+            return response()->json([
+                'status'=>'success',
+                'data'=>$product
+            ],200);
+        }else{
+            return response()->json([
+                'status'=>'error',
+                'message'=>'Product not found'
+            ],201);
+        }//llave else
+    }//llave show
     public function destroy($id){
         if(Product::where('id',$id)->exists()){
             $product= Product::find($id);
