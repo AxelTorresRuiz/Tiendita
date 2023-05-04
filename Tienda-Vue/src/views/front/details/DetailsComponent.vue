@@ -18,7 +18,7 @@
                         <p class="lead">{{ data.description }}</p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button" @click="addCart">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
@@ -149,6 +149,36 @@ export default{
             data:[],
             url:""
         }
+    },
+    methods: {
+        addCart(){
+            let item ={
+                id:this.data.id,
+                name:this.data.name,
+                img:this.data.img,
+                price:this.data.price,
+                cantidad:1
+            }
+            let arrayCarrito=[]
+            if(localStorage.getItem('carrito')==null){
+                arrayCarrito.push(item)
+                localStorage.setItem('carrito',JSON.stringify(arrayCarrito))
+            }else{
+                arrayCarrito = JSON.parse(localStorage.getItem('carrito'))
+                let existe = false
+                arrayCarrito.forEach(item=>{
+                    if(item.id == this.data.id){
+                        item.cantidad+=1
+                        existe=true
+                    }
+                })
+                if(!existe){
+                    arrayCarrito.push(item)
+                }
+                localStorage.setItem('carrito', JSON.stringify(arrayCarrito))
+            }//llave else
+           this.$router.push('/cart')
+        }//llave funcion
     },
     created() {
         this.url=process.env.VUE_APP_IMG

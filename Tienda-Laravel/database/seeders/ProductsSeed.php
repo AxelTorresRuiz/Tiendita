@@ -18,7 +18,7 @@ class ProductsSeed extends Seeder
         DB::table('products')->insert([
             'name'=>'Evangelion',
             'price'=>100,
-            'img'=>'default.jpg',
+            'img'=>'evangelionmanga.jpg',
             'condition'=>'Nuevo',
             'description'=>'Tomo uno de el manga de Evangelion',
             'ship'=>true,
@@ -40,6 +40,20 @@ class ProductsSeed extends Seeder
             'size'=>'unitalla',
             'status'=>'disponible',
             'slug'=>'tasogare-otome-x-amnesia-manga',
+            'id_category'=>4,
+            'id_user'=>1
+        ]);
+        DB::table('products')->insert([
+            'name'=>'Dragon Ball Super',
+            'price'=>100,
+            'img'=>'default.jpeg',
+            'condition'=>'new',
+            'description'=>'Manga de padre ball',
+            'ship'=>false,
+            'stock'=>20,
+            'size'=>'unitalla',
+            'status'=>'disponible',
+            'slug'=>'dragon-ball-super-manga',
             'id_category'=>4,
             'id_user'=>1
         ]);
