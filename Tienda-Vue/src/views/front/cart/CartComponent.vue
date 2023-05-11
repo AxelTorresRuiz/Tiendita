@@ -30,11 +30,14 @@
                 </tbody>
             </table>
             <h6 class="text-end">Total: ${{ total.toFixed(2) }}</h6>
-            <div class="row">
-                <button class="btn btn-danger btn-sm col-1" @click="vaciar">
+            <div class="row d-flex justify-content-between">
+                <button class="btn btn-outline-danger btn-sm col-1" @click="vaciar">
                     <i class="fa fa-trash">
-                    </i> Vaciar carrito
+                    </i> Vaciar
                 </button>
+                <router-link to="checkout" class="btn btn-outline-success col-1" >
+                    <i class="fa fa-credit-card"></i>Pagar
+                </router-link>
             </div>
         </section>
     </div>
