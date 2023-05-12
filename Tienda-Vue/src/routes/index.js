@@ -6,6 +6,7 @@ import ProductsComponent from '@/views/admin/products/ProductsComponent'
 import PedidosComponent from '@/views/admin/pedidos/PedidosComponent'
 import DetailsComponent from '@/views/front/details/DetailsComponent'
 import CartComponent from '@/views/front/cart/CartComponent'
+import CheckoutComponent from '@/views/front/cart/CheckoutComponent'
 
 const routes =[
     {path:'/admin',name:'admin',component:HomeComponent},
@@ -14,6 +15,7 @@ const routes =[
     {path:'/admin/pedidos',name:'pedidos',component:PedidosComponent},
     {path:'/details/:slug', name:'details',component:DetailsComponent},
     {path:'/:pathMatch(.*)*',name:"notfound",component:NotFoundComponent},
+    {path:'/checkout', name:'checkout', component:CheckoutComponent},
     {path:'/cart', name:'cart', component:CartComponent}
     
     

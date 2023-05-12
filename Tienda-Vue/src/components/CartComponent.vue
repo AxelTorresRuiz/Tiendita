@@ -15,7 +15,13 @@ export default{
     name:"CartComponent",
     data(){
         return{
-            cantidad:10
+            cantidad:0
+        }
+    },
+    mounted() {
+        if(localStorage.getItem('carrito')){
+            let data = JSON.parse(localStorage.getItem('carrito'))
+            this.cantidad=data.length
         }
     }
 }
