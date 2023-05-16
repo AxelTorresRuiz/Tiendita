@@ -22,6 +22,7 @@ Route::post('/products/do/like',[ProductsController::class,'doLike']);
 Route::post('/products/do/question',[ProductsController::class,'doQuestion']);
 Route::post('/products/do/review',[ProductsController::class,'doReview']);
 Route::post('/products/do/media',[ProductsController::class,'doMedia']);
+Route::post('/login',[AuthController::class,'login']);
 
 
 
