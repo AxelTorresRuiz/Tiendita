@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarproductsController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SellsController;
