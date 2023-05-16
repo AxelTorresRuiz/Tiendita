@@ -7,6 +7,7 @@ import PedidosComponent from '@/views/admin/pedidos/PedidosComponent'
 import DetailsComponent from '@/views/front/details/DetailsComponent'
 import CartComponent from '@/views/front/cart/CartComponent'
 import CheckoutComponent from '@/views/front/cart/CheckoutComponent'
+import LoginComponent from '@/auth/LoginComponent'
 
 const routes =[
     {path:'/admin',name:'admin',component:HomeComponent},
@@ -16,6 +17,7 @@ const routes =[
     {path:'/details/:slug', name:'details',component:DetailsComponent},
     {path:'/:pathMatch(.*)*',name:"notfound",component:NotFoundComponent},
     {path:'/checkout', name:'checkout', component:CheckoutComponent},
+    {path:'/login', name: 'login', component:LoginComponent},
     {path:'/cart', name:'cart', component:CartComponent}
     
     
