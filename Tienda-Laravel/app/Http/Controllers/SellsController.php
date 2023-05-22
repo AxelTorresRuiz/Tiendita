@@ -11,9 +11,13 @@ class SellsController extends Controller
 {
     public function store(Request $request){
         $reglas=Validator::make($request->all(),[
-            'status'=>'required',
-            'ship_tax'=>'required',
-            'id_user'=>'required'
+            'name'=>'required',
+            'email'=>'required|email',
+            'ap'=>'required',
+            'address' =>'required',
+            'phone' => 'required',
+            'items' => 'required'
+
         ]);
         if($reglas->fails()){
             return response()->json([
@@ -22,7 +26,7 @@ class SellsController extends Controller
                 'data'=>$reglas->errors()
                 ],201);
         }else{
-            $sell=new Sell();
+           /* $sell=new Sell();
             $sell->status = $request-> status;
             $sell->ship_tax = $request-> ship_tax;
             $sell->id_user = $request-> id_user;
@@ -34,11 +38,14 @@ class SellsController extends Controller
                 $sell_item->id_product=$p['id_product'];
                 $sell_item->id_sell=$sell->id;
                 $sell_item->save();
-            }
-            return response()->json([
+            }*/
+           /* return response()->json([
                 'status'=>'Success',
-                'message'=>$sell_item
-            ]);
+                'message'=>$sell_item*/
+                return response()->json([
+                    'status' => 'success'
+                ]);
+            
         }
     }
     public function index(){

@@ -57,11 +57,12 @@
             }
         },
         mounted(){
-            this.items = JSON.parse(localStorage.getItem('carrito'))
-            this.items.forEach(item=>{
+            if(localStorage.getItem('carrito')){
+                this.items = JSON.parse(localStorage.getItem('carrito'))
+                this.items.forEach(item=>{
                 this.total += item.price * item.cantidad
             })
-
+            }
         },created() {
             this.url = process.env.VUE_APP_IMG
         },

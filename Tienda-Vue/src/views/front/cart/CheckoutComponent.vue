@@ -12,23 +12,26 @@
                     <div class="row">
                         <div class="col form-group">
                             <label for="">Nombre:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" v-model="name">
                         </div>
                         <div class="col form-group">
                             <label for="">Apellido:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" v-model="ap">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="">Telefono:</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" v-model="phone">
                     </div>
                     <div class="form-group">
                         <label for="">Email:</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" v-model="email">
                     </div>
                     <div class="form-group">
-                        <button @click="step = 2" class="btn btn-outline-primary" type="button">
+                        <div class="alert alert-danger p-2" v-if="formValid">
+                            <p><b>Error:</b> Favor de llenar todos los campos</p>
+                        </div>
+                        <button @click="validateF(  )" class="btn btn-outline-primary" type="button">
                             <i class="fa fa-arrow-right"></i> Siguiente
                         </button>
                     </div>
@@ -40,19 +43,22 @@
                  <form>
                     <div class="form-group">
                         <label for="">Dirección:</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" v-model="address">
                     </div>
                     <div class="form-group">
                         <label for="">Codigo Postal:</label>
-                        <input type="number" min="1000" class="form-control">
+                        <input type="number" min="1000" class="form-control" v-model="cp">
                     </div>
                     <div class="form-group">
                         <label for="">Referencia:</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" v-model="reference">
                     </div>
                  </form>
                 <div class="form-group">
-                    <button @click="step = 3" class="btn btn-outline-primary" type="button">
+                    <div class="alert alert-danger p-2" v-if="formValid2">
+                            <p><b>Error:</b> Favor de llenar todos los campos</p>
+                        </div>
+                    <button @click="validateEnvio()" class="btn btn-outline-primary" type="button">
                         <i class="fa fa-arrow-right"></i> Siguiente
                     </button>
                 </div>
@@ -62,8 +68,8 @@
              <div class="row" v-if="step == 3">
                 <h2 class="h5">Metodo de Pago</h2>
                 <div class="form-group">
-                    <button class="btn btn-outline-primary">
-                         <i class="fa fa-arrow-right"></i> Finalizar
+                    <button class="btn btn-outline-primary" @click="sendData()">
+                         <i class="fa fa-arrow-right"></i> Finalizar Pedido
                     </button>
                 </div>
             </div>
@@ -94,6 +100,7 @@
 </template>
 <script>
 import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vue';
+import axios from 'axios';
 
     export default{
     name: "CheckoutComponent",
@@ -103,7 +110,17 @@ import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vu
             step:1,
             items:[],
             total:0,
-            url:""
+            url:"",
+            formValid:false,
+            formValid2:false,
+
+            name:"Aaron",
+            ap:"Valdez",
+            email:"xXPussyDestroyerXx@gmail.com",
+            phone:"6361278829",
+            address:"Mi casa",
+            cp:"31700",
+            reference:"mucho maincra",
         }
     },
     mounted() {
@@ -113,6 +130,37 @@ import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vu
             this.items.forEach(item=>(
                 this.total += item.price * item.cantidad
             ))
+        }
+    },
+    methods: {
+        validateF(){
+            if(this.name.trim() !="" && this.ap.trim() !="" &&
+            this.email.trim()!="" && this.phone.trim() !=""){
+                this.step=2
+            }else{
+                this.formValid = true
+            }
+        },
+        validateEnvio(){
+            if(this.address.trim() !="" && this.cp !="" &&
+            this.reference.trim()!=""){
+                this.step=3
+            }else{
+                this.formValid2 = true
+            }
+        },
+        sendData(){
+            let data ={
+                name:this.name,
+                email:this.email,
+                address:this.address,
+                phone:this.phone,
+                items:this.items,
+                ap:this.ap
+            }
+            axios.post(process.env.VUE_APP_URL+"sells",data).then(res=>{
+                console.log(res)
+            })
         }
     },
 }
