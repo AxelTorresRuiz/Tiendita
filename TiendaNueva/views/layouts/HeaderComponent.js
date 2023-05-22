@@ -4,9 +4,10 @@ export default function HeaderComponent(){
 
     return(
         <View style={styles.container}>
-            <Image style={styles.logo} source={{uri:'source.boringavatars.com/bauhaus/120/Stefan?colors=264653,2a9d8f,e9c46a'}}
+            <Image style={styles.logo} source={{uri:'https://uploads.turbologo.com/uploads/design/hq_preview_image/1847934/draw_svg20210507-22909-18ipq8j.svg.png'}}
             />
-            <Image style={{width:50,height:50,borderRadius:25}} source={{uri:'https://xsgames.co/randomusers/avatar.php?g=pixel'}}
+            <Image style={{width:50,height:50,borderRadius:25}} 
+            source={{uri:'https://xsgames.co/randomusers/avatar.php?g=pixel'}}
             />
         </View>
     )
