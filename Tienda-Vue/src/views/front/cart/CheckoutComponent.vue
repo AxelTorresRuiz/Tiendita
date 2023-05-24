@@ -68,7 +68,9 @@
              <div class="row" v-if="step == 3">
                 <h2 class="h5">Metodo de Pago</h2>
                 <div class="form-group">
-                    <button class="btn btn-outline-primary" @click="sendData()">
+                    <div v-if="!paid" id="btnPaypal"></div>
+                    <div v-else id="confirmation"> Order Complete!</div>
+                    <button v-if="paid" class="btn btn-outline-primary" @click="sendData()">
                          <i class="fa fa-arrow-right"></i> Finalizar Pedido
                     </button>
                 </div>
@@ -101,6 +103,7 @@
 <script>
 import NavFrontComponent from '@/components/layoutsfrontend/NavFrontComponent.vue';
 import axios from 'axios';
+import {loadScript} from "@paypal/paypal-js";
 
     export default{
     name: "CheckoutComponent",
@@ -121,9 +124,12 @@ import axios from 'axios';
             address:"Mi casa",
             cp:"31700",
             reference:"mucho maincra",
+            
+            paypal:null,
+            paid:false,
         }
     },
-    mounted() {
+    async mounted() {
         this.url = process.env.VUE_APP_IMG
         if(localStorage.getItem('carrito')){
             this.items = JSON.parse(localStorage.getItem('carrito') )
@@ -145,6 +151,16 @@ import axios from 'axios';
             if(this.address.trim() !="" && this.cp !="" &&
             this.reference.trim()!=""){
                 this.step=3
+                loadScript({
+                    'client-id':"AX3oSZu7n95Rj-o3gRgk2wdwGMS5R6EcX7B9Wa3x1pmyg-pE6d3s_AjSi-ZI4J-uBoQnvyw4Yh5N-yLR",
+                    currency:'MXN'
+                }).then((paypal) =>{
+                    paypal.Buttons({
+                        createOrder: this.createOrder,
+                        onApprove: this.onApprove,
+                    })
+                    .render('#btnPaypal');
+                })
             }else{
                 this.formValid2 = true
             }
@@ -160,6 +176,25 @@ import axios from 'axios';
             }
             axios.post(process.env.VUE_APP_URL+"sells",data).then(res=>{
                 console.log(res)
+            })
+        },
+        createOrder: function(data, actions){
+            console.log('Creando una orden...');
+            return actions.order.create({
+                purchase_units: [
+                    {
+                        amount:{
+                            value:this.total,
+                        }
+                    }
+                ]
+            });
+        },
+        onApprove: function(data, actions){
+            console.log('Orden aprovada...');
+            return actions.order.capture().then(() => {
+                this.paid = true;
+                console.log('uwu')
             })
         }
     },
