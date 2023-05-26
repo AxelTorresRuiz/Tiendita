@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Sell;
 use App\Models\SellItem;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 
 class SellsController extends Controller
 {
@@ -13,7 +16,7 @@ class SellsController extends Controller
         $reglas=Validator::make($request->all(),[
             'name'=>'required',
             'email'=>'required|email',
-            'ap'=>'required',
+            //'ap'=>'required',
             'address' =>'required',
             'phone' => 'required',
             'items' => 'required'
@@ -26,27 +29,42 @@ class SellsController extends Controller
                 'data'=>$reglas->errors()
                 ],201);
         }else{
-           /* $sell=new Sell();
-            $sell->status = $request-> status;
-            $sell->ship_tax = $request-> ship_tax;
-            $sell->id_user = $request-> id_user;
-            $sell->save();
-            foreach($request->products as $p){
-                $sell_item=new SellItem();
-                $sell_item->price=$p['price'];
-                $sell_item->quantity=$p['quantity'];
-                $sell_item->id_product=$p['id_product'];
-                $sell_item->id_sell=$sell->id;
-                $sell_item->save();
-            }*/
-           /* return response()->json([
-                'status'=>'Success',
-                'message'=>$sell_item*/
-                return response()->json([
-                    'status' => 'success'
-                ]);
-            
-        }
+                try{
+                    $user = User::where('email',$request->email)->first();
+                    if (is_null($user)){
+                        $user = new User();
+                        $user->name = $request->name;
+                        $user->email = $request->email;
+                        $user->password = Hash::make($request->email);
+                        $user->phone = $request->phone;
+                        $user->address = $request->address;
+                        $user->img = 'default.jpeg';
+                        $user->save();
+                    }//llave if user null
+                    $sell = new Sell();
+                    $sell->status = 'preparacion';
+                    $sell->ship_tax = 150.50;
+                    $sell->id_user = $user->id;
+                    $sell->save();
+                    //Guardar productos de la venta
+                    foreach($request->items as $item){
+                        $sellItem = new SellItem();
+                        $sellItem->price = $item['price'];
+                        $sellItem->quantity = $item['cantidad'];
+                        $sellItem->id_product = $item['id'];
+                        $sellItem->id_sell = $sell->id;
+                        $sellItem->save();
+                    }//llave del foreacidh
+                    return response()->json([
+                        'status' => 'success',
+                        'sell'=>$sell
+                    ],200);
+                }catch(Exception $e){
+                    return response()->json([
+                        'error'=>$e->getMessage()
+                    ],201);
+                }
+        }// llave else
     }
     public function index(){
         $datos=Sell::select('sells.*','users.name as user_name')

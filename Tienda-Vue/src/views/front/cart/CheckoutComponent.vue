@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <div v-if="!paid" id="btnPaypal"></div>
                     <div v-else id="confirmation"> Order Complete!</div>
-                    <button v-if="paid" class="btn btn-outline-primary" @click="sendData()">
+                    <button class="btn btn-outline-primary" @click="sendData()">
                          <i class="fa fa-arrow-right"></i> Finalizar Pedido
                     </button>
                 </div>
@@ -171,11 +171,13 @@ import {loadScript} from "@paypal/paypal-js";
                 email:this.email,
                 address:this.address,
                 phone:this.phone,
+                //ap:this.ap,
                 items:this.items,
-                ap:this.ap
+                
             }
+            console.log(JSON.stringify(data))
             axios.post(process.env.VUE_APP_URL+"sells",data).then(res=>{
-                console.log(res)
+                console.log(res);
             })
         },
         createOrder: function(data, actions){
