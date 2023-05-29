@@ -1,11 +1,18 @@
+import { useEffect, useState } from 'react'
 import {StyleSheet,View, Text, TouchableWithoutFeedback, ImageBackground} from 'react-native'
 
 export default function ProductItemComponent({item}){
+     const [img, setImg] = useState("")
+     useEffect(()=>{
+            setImg("http://localhost:8000/img/products/"+item.img)
+        
+     },[])
     return(
         <TouchableWithoutFeedback onPress={()=>{} }
         style={styles.parent}>
             <View style={{padding:10, backgroundColor:'white',margin:10, borderRadius:20}}>
-                <ImageBackground source={{uri: "https://m.media-amazon.com/images/I/81mSq3tWczL.jpg"}}
+                
+                <ImageBackground source={{uri: img}}
                 resizeMode='cover'
                 style={styles.image} imageStyle={{borderRadius:25}}/>
                 <View>
