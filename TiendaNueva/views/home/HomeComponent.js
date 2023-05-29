@@ -15,7 +15,7 @@ export default function HomeComponent(){
                 data.map((item,index)=>{
                     return (
                         <View key={"item_"+index}>
-                            <ProductItemComponent/>
+                            <ProductItemComponent item={item} key={"i_"+index} />
                         </View>
                     )
                 })
