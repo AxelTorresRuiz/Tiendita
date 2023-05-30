@@ -7,7 +7,7 @@
                     <li class="nav-item">
                         <img src="@/assets/img/user.png" class="imgProfile" alt="">
                         
-                         Axel Torres
+                         User
                     </li>
                 </ul>
             </div>
