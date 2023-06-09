@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex">
         <router-link to="/cart">
-            <button class="btn btn-outline-dark">
+            <button class="btn btn-outline-danger text-light">
             <i class="bi-cart-fill me-1"></i>
             Carrito de Compras
             <span class="badge bg-dark text-white ms-1 rounded-pill">{{ cantidad }}</span>

@@ -1,6 +1,8 @@
 <template>
 <!-- Navigation-->
 <NavFrontComponent />
+<Body style="background-image: url(https://cdn.theatlantic.com/thumbor/VCoUZjXa6W3jOoQ9yG4pFlR59LY=/80x43:2688x1999/1200x900/media/img/mt/2015/10/Cygnus_v3_BandW/original.jpg);
+">
         <!-- Header-->
         <header class="bg-dark py-5" style="background-image: url(https://i.imgur.com/lUGHGT5.jpg);">
             <div class="container px-4 px-lg-5 my-5">
@@ -15,12 +17,12 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5" v-for="x in data" v-bind:key="x.product.id">
-                        <div class="card h-100">
+                        <div class="card h-100 bg-black bg-gradient border border-light border-2">
                             <!-- Product image-->
                             <img class="card-img-top" :src="url+'img/products/'+x.product.img" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
-                                <div class="text-center">
+                                <div class="text-center text-light">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{x.product.name}}</h5>
                                     <!-- Product price-->
@@ -30,7 +32,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                  <router-link class="btn btn-outline-dark mt-auto" 
+                                  <router-link class="btn btn-outline-light mt-auto text-light" 
                                   :to="'/details/'+x.product.slug">Ver Más</router-link></div>
                             </div>
                         </div>
@@ -40,7 +42,7 @@
         </section>
         <!-- Footer-->
         <FooterFrontComponent />
-        
+      </Body>
 </template>
 <script>
 import FooterFrontComponent from '@/components/layoutsfrontend/FooterFrontComponent.vue';
